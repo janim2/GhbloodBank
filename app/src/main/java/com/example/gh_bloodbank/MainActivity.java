@@ -3,6 +3,8 @@ package com.example.gh_bloodbank;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         sdofdonation = mainAccessor.getString("date_donation");
         smedicalStatus = mainAccessor.getString("medical_status");
 
-        if(name.getText().equals("")){
+        if(isNetworkAvailable()){
             try {
                 fetchuserdata(FirebaseAuth.getInstance().getCurrentUser());
             }catch (NullPointerException e){
@@ -105,10 +107,15 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.logout) {
-            mainAccessor.put("login_checker", false);
-            FirebaseAuth.getInstance().signOut();
-            mainAccessor.clearStore();
-            startActivity(new Intent(MainActivity.this, Login.class));
+            if(isNetworkAvailable()){
+                mainAccessor.put("login_checker", false);
+                FirebaseAuth.getInstance().signOut();
+                mainAccessor.clearStore();
+                startActivity(new Intent(MainActivity.this, Login.class));
+            }else{
+                Toast.makeText(MainActivity.this, "No internet connection", Toast.LENGTH_LONG).show();
+            }
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -162,8 +169,6 @@ public class MainActivity extends AppCompatActivity {
 //                            Toast.makeText(getActivity(),"Couldn't fetch posts",Toast.LENGTH_LONG).show();
                         }
                     }
-                    Toast.makeText(MainActivity.this, s_name, Toast.LENGTH_LONG).show();
-
 
                 }
             }
@@ -174,5 +179,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        try {
+            ConnectivityManager connectivityManager
+                    = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }catch (NullPointerException e){
+
+        }
+        return false;
     }
 }
