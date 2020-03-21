@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "74443329621",
+    "firebase_url": "https://ghbloodbank.firebaseio.com",
+    "project_id": "ghbloodbank",
+    "storage_bucket": "ghbloodbank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74443329621:android:fbac234dc47ab95a6184dc",
+        "android_client_info": {
+          "package_name": "com.example.gh_bloodbank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "74443329621-av3e8cobdvsnsnhbr0vfpn69g8t183dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBES00S7exjN8qkvic7Vq3rQfkc0OyKjzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "74443329621-av3e8cobdvsnsnhbr0vfpn69g8t183dt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
