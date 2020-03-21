@@ -133,7 +133,7 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&types=" + placetofind);
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyC3NDxV7ESwzeUV6t_wmzlDr7UWxwnqSRc");
+        googlePlacesUrl.append("&key=" + "api key here");
 
         GooglePlacesReadTask googlePlacesReadTask = new GooglePlacesReadTask();
         Object[] toPass = new Object[2];
