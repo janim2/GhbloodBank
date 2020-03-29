@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 query = query.toLowerCase();
                 if(query.equals("a") || query.equals("b") || query.equals("ab") || query.equals("o")){
                     Intent seacrchintent = new Intent(MainActivity.this, SearchActivity.class);
+                    mainAccessor.put("blood_type", query);
                     seacrchintent.putExtra("blood_type", query);
                     startActivity(seacrchintent);
                 }else{

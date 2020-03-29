@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/fullname"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>
@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/dob"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>
@@ -82,7 +82,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/weight"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>
@@ -98,7 +98,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/height"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>
@@ -113,7 +113,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/dofdonation"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>
@@ -128,7 +128,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Here"
+                android:text="None"
                 android:id="@+id/medicalStatus"
                 android:layout_marginBottom="10dp"
                 android:textSize="15sp"/>

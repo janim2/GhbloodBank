@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gh_bloodbank.placelocationfiles.GooglePlacesReadTask;
@@ -51,14 +52,15 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         LocationListener {
 
     private GoogleMap mMap;
-    double latitude;
-    double longitude;
+    double latitude;// = 6.686122;
+    double longitude;// = -1.573725;
     private int PROXIMITY_RADIUS = 5000;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     String bloodType;
     ProgressBar loading;
+    private TextView status;
 
 
     private void handleIntent(Intent intent) {
@@ -84,8 +86,9 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
         handleIntent(getIntent());
         bloodType = getIntent().getStringExtra("blood_type");
         loading = findViewById(R.id.loading);
+        status = findViewById(R.id.status);
 
-        getSupportActionBar().setTitle("Search for blood");
+        getSupportActionBar().setTitle("Search for blood " + bloodType.toUpperCase());
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
@@ -128,14 +131,15 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
 
     private void findNearBy(String placetofind) {
         loading.setVisibility(View.VISIBLE);
+        status.setText("Searching...");
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
         googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
         googlePlacesUrl.append("&types=" + placetofind);
         googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "api key here");
+        googlePlacesUrl.append("&key=" + "AIzaSyC3NDxV7ESwzeUV6t_wmzlDr7UWxwnqSRc");
 
-        GooglePlacesReadTask googlePlacesReadTask = new GooglePlacesReadTask();
+        GooglePlacesReadTask googlePlacesReadTask = new GooglePlacesReadTask(SearchActivity.this, status);
         Object[] toPass = new Object[2];
         toPass[0] = mMap;
         toPass[1] = googlePlacesUrl.toString();
